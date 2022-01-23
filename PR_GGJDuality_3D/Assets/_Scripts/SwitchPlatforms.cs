@@ -4,28 +4,40 @@ using UnityEngine;
 
 public class SwitchPlatforms : MonoBehaviour
 {
-    public bool day = true;
-    public GameObject[] gameObjects;
+    private bool day = true;
+    private bool pressed = false;
+    private GameObject[] dayObjects;
+    private GameObject[] nightObjects;
     // Start is called before the first frame update
     void Start()
     {
-        for(int i = 0; i < gameObjects.Length; i++)
+        dayObjects = GameObject.FindGameObjectsWithTag("day");
+        nightObjects = GameObject.FindGameObjectsWithTag("night");
+
+        for(int i = 0; i < dayObjects.Length; i++)
         {
-            if(gameObjects[i].tag == "day" && day == true)
+            if (day == true)
             {
+                dayObjects[i].SetActive(true);
                 //Reds turn on
             }
-            else if(gameObjects[i].tag == "day" && day == true)
+            else if (day == false)
             {
+                dayObjects[i].SetActive(false);
                 //reds turn off
             }
-            else if (gameObjects[i].tag == "night" && day == true)
+        }
+        for (int i = 0; i < nightObjects.Length; i++)
+        {
+            if (day == true)
             {
-                //blues turn off
+                nightObjects[i].SetActive(false);
+                //Reds turn on
             }
-            else if (gameObjects[i].tag == "night" && day == false)
+            else if (day == false)
             {
-                //blues turn on
+                nightObjects[i].SetActive(true);
+                //reds turn off
             }
         }
     }
@@ -33,29 +45,43 @@ public class SwitchPlatforms : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        for (int i = 0; i < gameObjects.Length; i++)
+        for (int i = 0; i < dayObjects.Length; i++)
         {
-            if (gameObjects[i].tag == "day" && day == true)
+            if (day == true)
             {
+                dayObjects[i].SetActive(true);
                 //Reds turn on
             }
-            else if (gameObjects[i].tag == "day" && day == true)
+            else if (day == false)
             {
+                dayObjects[i].SetActive(false);
                 //reds turn off
             }
-            else if (gameObjects[i].tag == "night" && day == true)
+        }
+        for (int i = 0; i < nightObjects.Length; i++)
+        {
+            if (day == true)
             {
-                //blues turn off
+                nightObjects[i].SetActive(false);
+                //Reds turn on
             }
-            else if (gameObjects[i].tag == "night" && day == false)
+            else if (day == false)
             {
-                //blues turn on
+                nightObjects[i].SetActive(true);
+                //reds turn off
             }
         }
 
-        if (Input.GetAxis("Submit") > 0)
+        if ((Input.GetAxis("Submit") > 0) && (pressed == false))
         {
+            pressed = true;
+            day = !day;
             Debug.Log("This is being pressed");
         }
+        if(Input.GetAxis("Submit") == 0)
+        {
+            pressed = false;
+        }
+
     }
 }

@@ -4,12 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-<<<<<<< HEAD
-  - Day
-  - Night
-=======
-  - InteractiveObject
->>>>>>> main
+  - day
+  - night
   layers:
   - Default
   - TransparentFX
@@ -17,7 +13,7 @@ TagManager:
   - 
   - Water
   - UI
-  - Interact
+  - 
   - 
   - 
   - 

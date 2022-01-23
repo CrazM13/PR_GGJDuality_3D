@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &26502198 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1713777053529716331, guid: c32189e8f591007488d406900fd51abc, type: 3}
+  m_PrefabInstance: {fileID: 538382448}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &171326018
 GameObject:
   m_ObjectHideFlags: 0
@@ -132,6 +137,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 171326019}
+  - component: {fileID: 171326020}
   m_Layer: 0
   m_Name: Time_Cube_Tracker
   m_TagString: Untagged
@@ -153,6 +159,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &171326020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 171326018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e7653e6084bdbf4b8902323d594b615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  day: 1
+  gameObjects:
+  - {fileID: 1022805295}
+  - {fileID: 26502198}
 --- !u!1001 &538382448
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -163,6 +185,10 @@ PrefabInstance:
     - target: {fileID: 1713777053529716331, guid: c32189e8f591007488d406900fd51abc, type: 3}
       propertyPath: m_Name
       value: Night_Cube
+      objectReference: {fileID: 0}
+    - target: {fileID: 1713777053529716331, guid: c32189e8f591007488d406900fd51abc, type: 3}
+      propertyPath: m_TagString
+      value: night
       objectReference: {fileID: 0}
     - target: {fileID: 7095815675082512912, guid: c32189e8f591007488d406900fd51abc, type: 3}
       propertyPath: m_RootOrder
@@ -220,6 +246,10 @@ PrefabInstance:
     - target: {fileID: 2191180025122180901, guid: 8dd440c48470e66489cbfa9c86276404, type: 3}
       propertyPath: m_Name
       value: Day_Cube
+      objectReference: {fileID: 0}
+    - target: {fileID: 2191180025122180901, guid: 8dd440c48470e66489cbfa9c86276404, type: 3}
+      propertyPath: m_TagString
+      value: day
       objectReference: {fileID: 0}
     - target: {fileID: 2191180025122180905, guid: 8dd440c48470e66489cbfa9c86276404, type: 3}
       propertyPath: m_RootOrder
@@ -455,6 +485,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &1022805295 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2191180025122180901, guid: 8dd440c48470e66489cbfa9c86276404, type: 3}
+  m_PrefabInstance: {fileID: 648619350}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1071085127
 GameObject:
   m_ObjectHideFlags: 0
