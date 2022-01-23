@@ -106,9 +106,10 @@ GameObject:
   - component: {fileID: 5333141330627951267}
   - component: {fileID: 1594779289962687059}
   - component: {fileID: 4886294442847518032}
+  - component: {fileID: 4111359704633989862}
   m_Layer: 0
   m_Name: Particle System
-  m_TagString: Untagged
+  m_TagString: day
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4899,6 +4900,21 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &4111359704633989862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 695056273056277874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d70aa1162783c54d91094bca8075d19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parent: {fileID: 0}
+  particle: {fileID: 0}
+  system: {fileID: 0}
 --- !u!1 &6729620031595669095
 GameObject:
   m_ObjectHideFlags: 0
