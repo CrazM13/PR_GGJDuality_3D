@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour {
 	#region Inspector
 	[Header("Components")]
 	[SerializeField] private Rigidbody physicsbody;
+	[SerializeField] private CapsuleCollider playerCollider;
 	[SerializeField] private CameraMovement cameraControls;
 
 	[Header("Movement")]
@@ -29,6 +30,7 @@ public class PlayerMovement : MonoBehaviour {
 	}
 
 	void Update() {
+
 		if (canMoveInAir || grounded) UpdateMovementInputs();
 		UpdateJumpInputs();
 
@@ -45,6 +47,7 @@ public class PlayerMovement : MonoBehaviour {
 		if (!physicsbody) return;
 
 		if (movement != Vector3.zero) {
+			physicsbody.velocity = Vector3.zero;
 			physicsbody.MovePosition(transform.position + (movement * Time.deltaTime));
 		}
 
@@ -58,12 +61,16 @@ public class PlayerMovement : MonoBehaviour {
 		if (movement != Vector3.zero) movement = Vector3.zero;
 	}
 
-	private void OnCollisionEnter(Collision collision) {
-		Vector3 normal = collision.GetContact(0).normal;
-
-		if (Vector3.Angle(normal, transform.up) < 30) {
-			jumpCount = 0;
-			grounded = true;
+	private void OnCollisionStay(Collision collision) {
+		if (physicsbody.velocity.y > 0 || grounded) return;
+		
+		for (int i = 0; i < collision.contactCount; i++) {
+			Vector3 normal = collision.GetContact(i).normal;
+		
+			if (Vector3.Angle(normal, transform.up) < 30) {
+				jumpCount = 0;
+				grounded = true;
+			}
 		}
 	}
 	#endregion
@@ -103,5 +110,6 @@ public class PlayerMovement : MonoBehaviour {
 		movement += forcedMovement;
 	}
 	#endregion
+
 
 }
