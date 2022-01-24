@@ -225,7 +225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 630d3b0ad1beba046a2254428862c247, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  modelTransform: {fileID: 0}
+  modelTransform: {fileID: 8763029905874061195}
   physicsbody: {fileID: 644830080599796009}
   playerCollider: {fileID: 0}
   cameraControls: {fileID: 644830081253138894}
