@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour {
 
 	#region Inspector
 	[Header("Components")]
+	[SerializeField] private Transform modelTransform;
 	[SerializeField] private Rigidbody physicsbody;
 	[SerializeField] private CapsuleCollider playerCollider;
 	[SerializeField] private CameraMovement cameraControls;
@@ -34,6 +35,10 @@ public class PlayerMovement : MonoBehaviour {
 		if (canMoveInAir || grounded) UpdateMovementInputs(grounded ? 1 : 0.75f);
 		UpdateJumpInputs();
 
+		if (facingDir != Vector3.zero) {
+			modelTransform.rotation = Quaternion.Lerp(modelTransform.rotation, Quaternion.LookRotation(facingDir, transform.up), Time.deltaTime * 10);
+		}
+
 		#region Debug
 		if (kill) {
 			Die();
@@ -58,7 +63,10 @@ public class PlayerMovement : MonoBehaviour {
 			grounded = false;
 		}
 
-		if (movement != Vector3.zero) movement = Vector3.zero;
+		if (movement != Vector3.zero) {
+			facingDir = movement.normalized;
+			movement = Vector3.zero;
+		}
 	}
 
 	private void OnCollisionStay(Collision collision) {
@@ -77,6 +85,7 @@ public class PlayerMovement : MonoBehaviour {
 
 	#region Movement
 	private Vector3 movement;
+	private Vector3 facingDir;
 
 	private void UpdateMovementInputs(float scale) {
 		movement += cameraControls.Right * Input.GetAxis("Horizontal") * movementSpeed * scale;
@@ -104,6 +113,7 @@ public class PlayerMovement : MonoBehaviour {
 	#region Interface
 	public void Die() {
 		transform.position = deathPos;
+		physicsbody.velocity = Vector3.zero;
 	}
 
 	public void ForceMovePlayer(Vector3 forcedMovement) {
