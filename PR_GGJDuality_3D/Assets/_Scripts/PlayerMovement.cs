@@ -31,7 +31,7 @@ public class PlayerMovement : MonoBehaviour {
 
 	void Update() {
 
-		if (canMoveInAir || grounded) UpdateMovementInputs();
+		if (canMoveInAir || grounded) UpdateMovementInputs(grounded ? 1 : 0.75f);
 		UpdateJumpInputs();
 
 		#region Debug
@@ -47,7 +47,7 @@ public class PlayerMovement : MonoBehaviour {
 		if (!physicsbody) return;
 
 		if (movement != Vector3.zero) {
-			physicsbody.velocity = Vector3.zero;
+			physicsbody.velocity = new Vector3(physicsbody.velocity.x * 0, physicsbody.velocity.y * 1, physicsbody.velocity.z * 0);
 			physicsbody.MovePosition(transform.position + (movement * Time.deltaTime));
 		}
 
@@ -78,9 +78,9 @@ public class PlayerMovement : MonoBehaviour {
 	#region Movement
 	private Vector3 movement;
 
-	private void UpdateMovementInputs() {
-		movement += cameraControls.Right * Input.GetAxis("Horizontal") * movementSpeed;
-		movement += cameraControls.Forward * Input.GetAxis("Vertical") * movementSpeed;
+	private void UpdateMovementInputs(float scale) {
+		movement += cameraControls.Right * Input.GetAxis("Horizontal") * movementSpeed * scale;
+		movement += cameraControls.Forward * Input.GetAxis("Vertical") * movementSpeed * scale;
 	}
 	#endregion
 
