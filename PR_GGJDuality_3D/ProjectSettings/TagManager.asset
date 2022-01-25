@@ -6,6 +6,8 @@ TagManager:
   tags:
   - day
   - night
+  - InteractiveObject
+  - bullets
   layers:
   - Default
   - TransparentFX
