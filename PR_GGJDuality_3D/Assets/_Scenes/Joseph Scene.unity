@@ -1020,6 +1020,26 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1159175465}
     - target: {fileID: 644830081253138894, guid: 892449d617e9d1040be26e6fbcf9d25b, type: 3}
+      propertyPath: maxPitch
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 644830081253138894, guid: 892449d617e9d1040be26e6fbcf9d25b, type: 3}
+      propertyPath: minPitch
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 644830081253138894, guid: 892449d617e9d1040be26e6fbcf9d25b, type: 3}
+      propertyPath: zoomSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 644830081253138894, guid: 892449d617e9d1040be26e6fbcf9d25b, type: 3}
+      propertyPath: maxDistance
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 644830081253138894, guid: 892449d617e9d1040be26e6fbcf9d25b, type: 3}
+      propertyPath: minDistance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 644830081253138894, guid: 892449d617e9d1040be26e6fbcf9d25b, type: 3}
       propertyPath: rotationalSpeed
       value: 8
       objectReference: {fileID: 0}
