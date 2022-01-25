@@ -9,13 +9,24 @@ public class CameraMovement : MonoBehaviour {
 	[SerializeField] private Transform targetTransform;
 	[SerializeField] private Transform cameraTransform;
 
-	[Header("Configuration")]
-	[SerializeField] private float distance;
+	[Header("Zoom")]
+	[SerializeField] private float baseDistance;
+	[SerializeField] private float minDistance;
+	[SerializeField] private float maxDistance;
+
+	[Header("Pitch")]
+	[SerializeField] private float minPitch;
+	[SerializeField] private float maxPitch;
+
+	[Header("Speed")]
 	[SerializeField] private float rotationalSpeed;
+	[SerializeField] private float zoomSpeed;
 	[SerializeField] private float updateSpeed;
 	#endregion
 
-	private float angle;
+	private float yaw;
+	private float pitch;
+	private float zoom;
 
 	public Vector3 Forward {
 		get {
@@ -35,6 +46,8 @@ public class CameraMovement : MonoBehaviour {
 
 	void Start() {
 		Cursor.lockState = CursorLockMode.Locked;
+
+		zoom = minDistance + ((maxDistance - minDistance) * 0.5f);
 	}
 
 	void Update() {
@@ -43,22 +56,24 @@ public class CameraMovement : MonoBehaviour {
 		UpdateMouseInputs();
 
 		Vector3 center = targetTransform.position;
-		center = new Vector3(center.x, transform.position.y, center.z);
+		//center = new Vector3(center.x, transform.position.y, center.z);
 
-		Vector3 dir = AngleToDirection(angle);
-		Vector3 targetPos = center + (dir * distance);
+		Vector3 dir = AngleToDirection(pitch, yaw);
+		Vector3 targetPos = center + (dir * zoom);
 
-		transform.position = targetPos;//Vector3.Lerp(transform.position, targetPos, Time.deltaTime * updateSpeed);
+		transform.position = targetPos;
 
 		cameraTransform.LookAt(targetTransform.position);
 	}
 
 	private void UpdateMouseInputs() {
-		angle += -Input.GetAxis("Mouse X") * Time.deltaTime * rotationalSpeed;
+		yaw += Input.GetAxis("Mouse X") * Time.deltaTime * rotationalSpeed;
+		pitch = Mathf.Clamp(pitch + (Input.GetAxis("Mouse Y") * Time.deltaTime * rotationalSpeed), minPitch, maxPitch);
+		zoom = Mathf.Clamp(zoom + (Input.mouseScrollDelta.y * Time.deltaTime * zoomSpeed), minDistance, maxDistance);
 	}
 
-	private Vector3 AngleToDirection(float angle) {
-		return new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle));
+	private Vector3 AngleToDirection(float pitch, float yaw) {
+		return Quaternion.Euler(pitch, yaw, 0) * Vector3.forward;
 	}
 
 }
