@@ -3,15 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - day
-  - night
-  - InteractiveObject
-<<<<<<< HEAD
-  - bullets
-=======
-  - restriction
->>>>>>> main
+  tags: []
   layers:
   - Default
   - TransparentFX
