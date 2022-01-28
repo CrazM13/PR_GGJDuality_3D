@@ -158,7 +158,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 644830080599796011}
-  - component: {fileID: 644830080599796006}
+  - component: {fileID: 1091885375592707776}
+  - component: {fileID: 1434147055854594910}
   - component: {fileID: 644830080599796009}
   - component: {fileID: 644830080599796008}
   m_Layer: 0
@@ -176,14 +177,28 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 644830080599796007}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.03, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8763029905874061195}
   m_Father: {fileID: 644830080129559567}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &644830080599796006
+--- !u!136 &1091885375592707776
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 644830080599796007}
+  m_Material: {fileID: 13400000, guid: 5532150df7cbe064bae0fd47de046cce, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 1.9
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.05, z: 0}
+--- !u!136 &1434147055854594910
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -193,7 +208,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
+  m_Radius: 0.25
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
@@ -227,12 +242,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modelTransform: {fileID: 8763029905874061195}
   physicsbody: {fileID: 644830080599796009}
-  playerCollider: {fileID: 644830080599796006}
   cameraControls: {fileID: 644830081253138894}
   movementSpeed: 1
   maxJumpCount: 1
   jumpForce: 7
-  canMoveInAir: 0
+  canMoveInAir: 1
   kill: 0
 --- !u!1 &644830081253138892
 GameObject:
@@ -280,14 +294,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetTransform: {fileID: 644830080599796011}
   cameraTransform: {fileID: 644830079722097025}
-  baseDistance: 0
   minDistance: 5
   maxDistance: 10
-  minPitch: 0
-  maxPitch: 0
-  rotationalSpeed: 8
-  zoomSpeed: 1
-  updateSpeed: 10
+  minPitch: -30
+  maxPitch: 30
+  rotationalSpeed: 360
+  zoomSpeed: 160
 --- !u!1 &4812241534738086308
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,7 +8,6 @@ public class PlayerMovement : MonoBehaviour {
 	[Header("Components")]
 	[SerializeField] private Transform modelTransform;
 	[SerializeField] private Rigidbody physicsbody;
-	[SerializeField] private CapsuleCollider playerCollider;
 	[SerializeField] private CameraMovement cameraControls;
 
 	[Header("Movement")]
@@ -51,21 +50,26 @@ public class PlayerMovement : MonoBehaviour {
 	private void FixedUpdate() {
 		if (!physicsbody) return;
 
-		if (movement != Vector3.zero) {
-			physicsbody.velocity = new Vector3(physicsbody.velocity.x * 0, physicsbody.velocity.y * 1, physicsbody.velocity.z * 0);
-			physicsbody.MovePosition(transform.position + (movement * Time.deltaTime));
+		if (forcedMovement != Vector3.zero) {
+			physicsbody.MovePosition(transform.position + forcedMovement);
+			forcedMovement = Vector3.zero;
+		}
+
+		if (playerMovement != Vector3.zero) {
+			Vector3 newVelocity = playerMovement * movementSpeed;
+			physicsbody.velocity = new Vector3(newVelocity.x, physicsbody.velocity.y, newVelocity.z);
 		}
 
 		if (shouldJump) {
-			physicsbody.AddForce((transform.up * jumpForce) + movement, ForceMode.Impulse);
+			physicsbody.AddForce((transform.up * jumpForce) + forcedMovement, ForceMode.Impulse);
 			jumpCount++;
 			shouldJump = false;
 			grounded = false;
 		}
 
-		if (movement != Vector3.zero) {
-			facingDir = movement.normalized;
-			movement = Vector3.zero;
+		if (playerMovement != Vector3.zero) {
+			facingDir = playerMovement.normalized;
+			playerMovement = Vector3.zero;
 		}
 	}
 
@@ -84,12 +88,13 @@ public class PlayerMovement : MonoBehaviour {
 	#endregion
 
 	#region Movement
-	private Vector3 movement;
+	private Vector3 forcedMovement;
+	private Vector3 playerMovement;
 	private Vector3 facingDir;
 
 	private void UpdateMovementInputs(float scale) {
-		movement += cameraControls.Right * Input.GetAxis("Horizontal") * movementSpeed * scale;
-		movement += cameraControls.Forward * Input.GetAxis("Vertical") * movementSpeed * scale;
+		playerMovement += cameraControls.Right * Input.GetAxis("Horizontal") * scale;
+		playerMovement += cameraControls.Forward * Input.GetAxis("Vertical") * scale;
 	}
 	#endregion
 
@@ -117,7 +122,7 @@ public class PlayerMovement : MonoBehaviour {
 	}
 
 	public void ForceMovePlayer(Vector3 forcedMovement) {
-		movement += forcedMovement;
+		this.forcedMovement += forcedMovement;
 	}
 	#endregion
 
