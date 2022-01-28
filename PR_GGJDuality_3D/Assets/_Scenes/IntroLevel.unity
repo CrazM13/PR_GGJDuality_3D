@@ -5266,15 +5266,9 @@ PrefabInstance:
       propertyPath: canMoveInAir
       value: 1
       objectReference: {fileID: 0}
-<<<<<<< HEAD
     - target: {fileID: 644830080599796008, guid: 892449d617e9d1040be26e6fbcf9d25b, type: 3}
       propertyPath: movementSpeed
       value: 2
-=======
-    - target: {fileID: 644830081253138894, guid: 892449d617e9d1040be26e6fbcf9d25b, type: 3}
-      propertyPath: distance
-      value: 5
->>>>>>> main
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 892449d617e9d1040be26e6fbcf9d25b, type: 3}
