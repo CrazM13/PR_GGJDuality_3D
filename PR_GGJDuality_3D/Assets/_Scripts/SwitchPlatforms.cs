@@ -8,11 +8,13 @@ public class SwitchPlatforms : MonoBehaviour
     private bool pressed = false;
     private GameObject[] dayObjects;
     private GameObject[] nightObjects;
+    [SerializeField] private bool restricted;
     // Start is called before the first frame update
     void Start()
     {
         dayObjects = GameObject.FindGameObjectsWithTag("day");
         nightObjects = GameObject.FindGameObjectsWithTag("night");
+        restricted = false;
 
         for(int i = 0; i < dayObjects.Length; i++)
         {
@@ -72,13 +74,18 @@ public class SwitchPlatforms : MonoBehaviour
             }
         }
 
-        if ((Input.GetAxis("Submit") > 0) && (pressed == false))
+        if(restricted == true)
+        {
+            pressed = true;
+        }
+
+        if ((Input.GetAxis("Switch Time") > 0) && (pressed == false) && (restricted == false))
         {
             pressed = true;
             day = !day;
             Debug.Log("This is being pressed");
         }
-        if(Input.GetAxis("Submit") == 0)
+        if((Input.GetAxis("Switch Time") == 0) && (restricted == false))
         {
             pressed = false;
         }
