@@ -163,7 +163,7 @@ GameObject:
   - component: {fileID: 644830080599796008}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -227,9 +227,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modelTransform: {fileID: 8763029905874061195}
   physicsbody: {fileID: 644830080599796009}
-  playerCollider: {fileID: 0}
+  playerCollider: {fileID: 644830080599796006}
   cameraControls: {fileID: 644830081253138894}
-  movementSpeed: 4
+  movementSpeed: 1
   maxJumpCount: 1
   jumpForce: 7
   canMoveInAir: 0
@@ -280,8 +280,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetTransform: {fileID: 644830080599796011}
   cameraTransform: {fileID: 644830079722097025}
-  distance: 10
-  rotationalSpeed: 2
+  baseDistance: 0
+  minDistance: 5
+  maxDistance: 10
+  minPitch: 0
+  maxPitch: 0
+  rotationalSpeed: 8
+  zoomSpeed: 1
   updateSpeed: 10
 --- !u!1 &4812241534738086308
 GameObject:
