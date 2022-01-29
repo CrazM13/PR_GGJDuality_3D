@@ -594,6 +594,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -2933139716659438605, guid: ed11d03b5e1eef548be647e95ea1489f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 88f0b634bdef3544496f097bcd7688d0, type: 2}
     - target: {fileID: 919132149155446097, guid: ed11d03b5e1eef548be647e95ea1489f, type: 3}
       propertyPath: m_Name
       value: Player
@@ -766,7 +770,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.00000023841858, y: 1.148457, z: 0.8207623}
+  m_ConnectedAnchor: {x: -0.00000023841858, y: -1.1484761, z: -0.8207564}
   serializedVersion: 2
   m_SwingAxis: {x: -1, y: 0, z: 0}
   m_TwistLimitSpring:
@@ -841,7 +845,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.16986257, y: -0.0000002704428, z: 5.743477}
+  m_ConnectedAnchor: {x: 0.16986145, y: -0.0000006832311, z: -5.743479}
   serializedVersion: 2
   m_SwingAxis: {x: 1, y: 0, z: 0}
   m_TwistLimitSpring:
@@ -917,7 +921,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.05025971, y: 4.974558, z: 4.72455}
+  m_ConnectedAnchor: {x: 0.05025971, y: -4.974563, z: -4.72455}
   serializedVersion: 2
   m_SwingAxis: {x: -1, y: 0, z: 0}
   m_TwistLimitSpring:
@@ -993,7 +997,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: -1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.00000011920929, y: -1.148457, z: 0.8207624}
+  m_ConnectedAnchor: {x: 0.00000023841858, y: 1.1484758, z: -0.82075685}
   serializedVersion: 2
   m_SwingAxis: {x: 1, y: 0, z: 0}
   m_TwistLimitSpring:
@@ -1069,7 +1073,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.000000035994574, y: -1.0663081e-14, z: 2.3027577}
+  m_ConnectedAnchor: {x: -0.00000020020806, y: -0.00001835823, z: -2.3027596}
   serializedVersion: 2
   m_SwingAxis: {x: -1, y: 0, z: 0}
   m_TwistLimitSpring:
@@ -1173,7 +1177,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -4.2632564e-14, y: 0, z: 1.0000005}
+  m_ConnectedAnchor: {x: 0, y: -0.00000023841858, z: -0.9999999}
   serializedVersion: 2
   m_SwingAxis: {x: 1, y: 0, z: 0}
   m_TwistLimitSpring:
@@ -1249,7 +1253,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.37188324, y: 0.73360634, z: 0}
+  m_ConnectedAnchor: {x: -95.541885, y: -16.133741, z: 20.442627}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 1, z: 0}
   m_TwistLimitSpring:
@@ -1325,7 +1329,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: -1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.000000017697467, y: -0.00000003710514, z: 2.3027573}
+  m_ConnectedAnchor: {x: 0.00000010151352, y: -0.00001939401, z: -2.3027592}
   serializedVersion: 2
   m_SwingAxis: {x: 1, y: 0, z: 0}
   m_TwistLimitSpring:
@@ -1401,7 +1405,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.37188357, y: 0.7336062, z: 0}
+  m_ConnectedAnchor: {x: -94.79812, y: -16.133741, z: 20.442627}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 1, z: 0}
   m_TwistLimitSpring:
@@ -1477,7 +1481,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.05026214, y: -4.9745593, z: 4.7245483}
+  m_ConnectedAnchor: {x: 0.050262637, y: 4.974561, z: -4.7245502}
   serializedVersion: 2
   m_SwingAxis: {x: 1, y: 0, z: 0}
   m_TwistLimitSpring:
