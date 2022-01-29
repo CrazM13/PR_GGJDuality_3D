@@ -17,19 +17,18 @@ public class PlayerMovement : MonoBehaviour {
 	[SerializeField] private int maxJumpCount;
 	[SerializeField] private float jumpForce;
 	[SerializeField] private bool canMoveInAir;
-
-	[Header("Debug")]
-	[SerializeField] private bool kill;
 	#endregion
 
 	private Vector3 deathPos;
 
-	#region Unity Events
-	void Start() {
-		deathPos = transform.position;
-	}
+	public bool IsActive { get; set; } = true;
 
+	public bool IsMoving => playerMovement.sqrMagnitude > 0;
+	public bool IsGrounded => grounded;
+
+	#region Unity Events
 	void Update() {
+		if (!IsActive) return;
 
 		if (canMoveInAir || grounded) UpdateMovementInputs(grounded ? 1 : 0.75f);
 		UpdateJumpInputs();
@@ -37,14 +36,6 @@ public class PlayerMovement : MonoBehaviour {
 		if (facingDir != Vector3.zero) {
 			modelTransform.rotation = Quaternion.Lerp(modelTransform.rotation, Quaternion.LookRotation(facingDir, transform.up), Time.deltaTime * 10);
 		}
-
-		#region Debug
-		if (kill) {
-			Die();
-			kill = false;
-		}
-		#endregion
-
 	}
 
 	private void FixedUpdate() {
@@ -116,9 +107,8 @@ public class PlayerMovement : MonoBehaviour {
 	#endregion
 
 	#region Interface
-	public void Die() {
-		transform.position = deathPos;
-		physicsbody.velocity = Vector3.zero;
+	public void Teleport(Vector3 position) {
+		physicsbody.position = position;
 	}
 
 	public void ForceMovePlayer(Vector3 forcedMovement) {
