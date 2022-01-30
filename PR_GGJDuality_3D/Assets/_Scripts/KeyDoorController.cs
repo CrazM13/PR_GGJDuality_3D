@@ -44,6 +44,7 @@ namespace KeySystem
 
                     doorAnim.Play(openAnimation);
                     doorOpen = true;
+                    GetComponent<Collider>().enabled = false;  
                     StartCoroutine(PauseDoorInteraction());
 
                 }
