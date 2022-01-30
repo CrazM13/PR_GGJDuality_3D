@@ -5,10 +5,11 @@ using UnityEngine;
 public class SwitchPlatforms : MonoBehaviour
 {
     private bool day = true;
-    private bool pressed = false;
+    [SerializeField]private bool pressed = false;
     private GameObject[] dayObjects;
     private GameObject[] nightObjects;
-    [SerializeField] private bool restricted;
+    private bool restricted;
+    private float timer = 10.0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -77,6 +78,12 @@ public class SwitchPlatforms : MonoBehaviour
         if(restricted == true)
         {
             pressed = true;
+            timer -= Time.deltaTime;
+            if(timer <= 0f)
+            {
+                day = !day;
+                timer = 10.0f;
+            }
         }
 
         if ((Input.GetAxis("Switch Time") > 0) && (pressed == false) && (restricted == false))
@@ -90,5 +97,20 @@ public class SwitchPlatforms : MonoBehaviour
             pressed = false;
         }
 
+    }
+
+    public void setRestrictedTrue()
+    {
+        restricted = true;
+    }
+
+    public void setRestrictedFalse()
+    {
+        restricted = false;
+    }
+
+    public bool getDay()
+    {
+        return day;
     }
 }

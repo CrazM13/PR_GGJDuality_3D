@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8401626438268576931}
   - component: {fileID: 8401626438268576956}
   - component: {fileID: 8401626438268576957}
+  - component: {fileID: 4243748699834272979}
   m_Layer: 0
   m_Name: Shooter
   m_TagString: Untagged
@@ -95,3 +96,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4243748699834272979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8401626438268576958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d9326e13598cad408b200ede674095e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shooter: {fileID: 8401626438268576958}
+  projectile: {fileID: 3712678145223840716, guid: f727e22377e093246ba3d758d4d8dbf0, type: 3}
+  waitingTime: 1

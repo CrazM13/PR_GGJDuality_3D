@@ -8,7 +8,6 @@ public class PlayerMovement : MonoBehaviour {
 	[Header("Components")]
 	[SerializeField] private Transform modelTransform;
 	[SerializeField] private Rigidbody physicsbody;
-	[SerializeField] private CapsuleCollider playerCollider;
 	[SerializeField] private CameraMovement cameraControls;
 
 	[Header("Movement")]
@@ -18,19 +17,16 @@ public class PlayerMovement : MonoBehaviour {
 	[SerializeField] private int maxJumpCount;
 	[SerializeField] private float jumpForce;
 	[SerializeField] private bool canMoveInAir;
-
-	[Header("Debug")]
-	[SerializeField] private bool kill;
 	#endregion
 
-	private Vector3 deathPos;
+	public bool IsActive { get; set; } = true;
+
+	public bool IsMoving => cashedMovement != Vector3.zero;
+	public bool IsGrounded => grounded;
 
 	#region Unity Events
-	void Start() {
-		deathPos = transform.position;
-	}
-
 	void Update() {
+		if (!IsActive) return;
 
 		if (canMoveInAir || grounded) UpdateMovementInputs(grounded ? 1 : 0.75f);
 		UpdateJumpInputs();
@@ -38,34 +34,31 @@ public class PlayerMovement : MonoBehaviour {
 		if (facingDir != Vector3.zero) {
 			modelTransform.rotation = Quaternion.Lerp(modelTransform.rotation, Quaternion.LookRotation(facingDir, transform.up), Time.deltaTime * 10);
 		}
-
-		#region Debug
-		if (kill) {
-			Die();
-			kill = false;
-		}
-		#endregion
-
 	}
 
 	private void FixedUpdate() {
 		if (!physicsbody) return;
 
-		if (movement != Vector3.zero) {
-			physicsbody.velocity = new Vector3(physicsbody.velocity.x * 0, physicsbody.velocity.y * 1, physicsbody.velocity.z * 0);
-			physicsbody.MovePosition(transform.position + (movement * Time.deltaTime));
+		if (forcedMovement != Vector3.zero) {
+			physicsbody.MovePosition(transform.position + forcedMovement);
+			forcedMovement = Vector3.zero;
+		}
+
+		if (playerMovement != Vector3.zero) {
+			Vector3 newVelocity = playerMovement * movementSpeed;
+			physicsbody.velocity = new Vector3(newVelocity.x, physicsbody.velocity.y, newVelocity.z);
 		}
 
 		if (shouldJump) {
-			physicsbody.AddForce((transform.up * jumpForce) + movement, ForceMode.Impulse);
+			physicsbody.AddForce((transform.up * jumpForce) + forcedMovement, ForceMode.Impulse);
 			jumpCount++;
 			shouldJump = false;
 			grounded = false;
 		}
 
-		if (movement != Vector3.zero) {
-			facingDir = movement.normalized;
-			movement = Vector3.zero;
+		if (playerMovement != Vector3.zero) {
+			facingDir = playerMovement.normalized;
+			playerMovement = Vector3.zero;
 		}
 	}
 
@@ -84,12 +77,15 @@ public class PlayerMovement : MonoBehaviour {
 	#endregion
 
 	#region Movement
-	private Vector3 movement;
+	private Vector3 forcedMovement;
+	private Vector3 playerMovement;
+	private Vector3 cashedMovement;
 	private Vector3 facingDir;
 
 	private void UpdateMovementInputs(float scale) {
-		movement += cameraControls.Right * Input.GetAxis("Horizontal") * movementSpeed * scale;
-		movement += cameraControls.Forward * Input.GetAxis("Vertical") * movementSpeed * scale;
+		playerMovement += cameraControls.Right * Input.GetAxis("Horizontal") * scale;
+		playerMovement += cameraControls.Forward * Input.GetAxis("Vertical") * scale;
+		cashedMovement = playerMovement;
 	}
 	#endregion
 
@@ -111,13 +107,12 @@ public class PlayerMovement : MonoBehaviour {
 	#endregion
 
 	#region Interface
-	public void Die() {
-		transform.position = deathPos;
-		physicsbody.velocity = Vector3.zero;
+	public void Teleport(Vector3 position) {
+		physicsbody.position = position;
 	}
 
 	public void ForceMovePlayer(Vector3 forcedMovement) {
-		movement += forcedMovement;
+		this.forcedMovement += forcedMovement;
 	}
 	#endregion
 

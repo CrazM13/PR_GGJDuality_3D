@@ -5,8 +5,8 @@ using UnityEngine;
 public class DeathTrigger : MonoBehaviour {
 
 	private void OnTriggerEnter(Collider other) {
-		PlayerMovement player = other.GetComponent<PlayerMovement>();
-		if (player) player.Die();
+		PlayerManager player = other.GetComponent<PlayerManager>();
+		if (player) player.Kill();
 	}
 
 }

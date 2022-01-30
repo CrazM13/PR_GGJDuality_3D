@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7684538710517511035}
   - component: {fileID: 7684538710517511036}
+  - component: {fileID: 2172536822413505497}
   m_Layer: 0
   m_Name: Time_Cube_Tracker
-  m_TagString: Untagged
+  m_TagString: time
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43,3 +44,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e7653e6084bdbf4b8902323d594b615, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pressed: 0
+--- !u!114 &2172536822413505497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7684538710517511034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 974df9947065e5d4594ddfeb1eba6195, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DirectionalLight: {fileID: 0}
+  Preset: {fileID: 11400000, guid: ac762ab4b063bad43b1c77f6bf0757f6, type: 2}
+  switchPlatforms: {fileID: 0}
+  timeOfDay: 0

@@ -10,7 +10,6 @@ public class CameraMovement : MonoBehaviour {
 	[SerializeField] private Transform cameraTransform;
 
 	[Header("Zoom")]
-	[SerializeField] private float baseDistance;
 	[SerializeField] private float minDistance;
 	[SerializeField] private float maxDistance;
 
@@ -21,7 +20,6 @@ public class CameraMovement : MonoBehaviour {
 	[Header("Speed")]
 	[SerializeField] private float rotationalSpeed;
 	[SerializeField] private float zoomSpeed;
-	[SerializeField] private float updateSpeed;
 	#endregion
 
 	private float yaw;
@@ -69,7 +67,7 @@ public class CameraMovement : MonoBehaviour {
 	private void UpdateMouseInputs() {
 		yaw += Input.GetAxis("Mouse X") * Time.deltaTime * rotationalSpeed;
 		pitch = Mathf.Clamp(pitch + (Input.GetAxis("Mouse Y") * Time.deltaTime * rotationalSpeed), minPitch, maxPitch);
-		zoom = Mathf.Clamp(zoom + (Input.mouseScrollDelta.y * Time.deltaTime * zoomSpeed), minDistance, maxDistance);
+		zoom = Mathf.Clamp(zoom + (-Input.mouseScrollDelta.y * Time.deltaTime * zoomSpeed), minDistance, maxDistance);
 	}
 
 	private Vector3 AngleToDirection(float pitch, float yaw) {
