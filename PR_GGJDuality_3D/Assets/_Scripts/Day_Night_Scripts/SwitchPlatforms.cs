@@ -5,7 +5,7 @@ using UnityEngine;
 public class SwitchPlatforms : MonoBehaviour
 {
     private bool day = true;
-    private bool pressed = false;
+    [SerializeField]private bool pressed = false;
     private GameObject[] dayObjects;
     private GameObject[] nightObjects;
     private bool restricted;
@@ -107,5 +107,10 @@ public class SwitchPlatforms : MonoBehaviour
     public void setRestrictedFalse()
     {
         restricted = false;
+    }
+
+    public bool getDay()
+    {
+        return day;
     }
 }

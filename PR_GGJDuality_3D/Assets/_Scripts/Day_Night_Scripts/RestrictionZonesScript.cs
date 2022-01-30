@@ -21,8 +21,13 @@ public class RestrictionZonesScript : MonoBehaviour
         var scaleShape = selfParticle.shape;
         scaleShape.scale = new Vector3(parent.transform.localScale.x, parent.transform.localScale.y, parent.transform.localScale.z);
 
+        var scaleEmmission = selfParticle.emission;
+        if(parent.transform.localScale.x >= 5 || parent.transform.localScale.y >= 5 || parent.transform.localScale.z >= 5)
+        {
+            //Debug.Log("This was reached.");
+            scaleEmmission.rateOverTime = (parent.transform.localScale.x + parent.transform.localScale.y + parent.transform.localScale.z)/2;
+        }
 
     }
-
     
 }
