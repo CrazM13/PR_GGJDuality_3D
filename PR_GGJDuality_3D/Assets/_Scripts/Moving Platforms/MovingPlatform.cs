@@ -13,6 +13,8 @@ public class MovingPlatform : MonoBehaviour {
 
 	private MovingPlatformWaypoint[] fullPath;
 
+	private bool isMoving = false;
+
 	private float distanceSpeedModifier = 1;
 
 	private float timeFromLastWaypoint = 0;
@@ -38,7 +40,7 @@ public class MovingPlatform : MonoBehaviour {
 #endif
 
 		{ // Update Time
-			float change = Time.deltaTime * movementSpeed;
+			float change = Time.deltaTime * movementSpeed * (isMoving ? 1 : 0);
 			if (distanceSpeedModifier != 0) change *= (1 / distanceSpeedModifier);
 			timeFromLastWaypoint += change;
 		}
@@ -71,6 +73,10 @@ public class MovingPlatform : MonoBehaviour {
 		for (int i = 0; i < waypoints.Length; i++) {
 			fullPath[i + 1] = waypoints[i];
 		}
+	}
+
+	public void StartMoving() {
+		isMoving = true;
 	}
 
 }

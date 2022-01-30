@@ -158,3 +158,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 915a4a3afa5ad9a45a0f6c15aeacc7a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onPlayerColliding:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5885564380903853716}
+        m_TargetAssemblyTypeName: MovingPlatform, Assembly-CSharp
+        m_MethodName: StartMoving
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

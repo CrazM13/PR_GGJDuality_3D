@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class MovingPlatformCollision : MonoBehaviour {
 
 	private Vector3 lastPos;
+
+	[SerializeField] private UnityEvent onPlayerColliding;
 
 	private void OnCollisionEnter(Collision collision) {
 		PlayerMovement player = collision.collider.GetComponent<PlayerMovement>();
@@ -33,6 +36,7 @@ public class MovingPlatformCollision : MonoBehaviour {
 				player.ForceMovePlayer(movement);
 
 				lastPos = newPos;
+				onPlayerColliding?.Invoke();
 			}
 		}
 	}
