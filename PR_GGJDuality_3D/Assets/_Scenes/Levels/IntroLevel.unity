@@ -753,7 +753,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneIndex: 2
-  delay: 5
+  delay: 1
 --- !u!65 &1186388147
 BoxCollider:
   m_ObjectHideFlags: 0
