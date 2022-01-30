@@ -19,11 +19,9 @@ public class PlayerMovement : MonoBehaviour {
 	[SerializeField] private bool canMoveInAir;
 	#endregion
 
-	private Vector3 deathPos;
-
 	public bool IsActive { get; set; } = true;
 
-	public bool IsMoving => playerMovement.sqrMagnitude > 0;
+	public bool IsMoving => cashedMovement != Vector3.zero;
 	public bool IsGrounded => grounded;
 
 	#region Unity Events
@@ -81,11 +79,13 @@ public class PlayerMovement : MonoBehaviour {
 	#region Movement
 	private Vector3 forcedMovement;
 	private Vector3 playerMovement;
+	private Vector3 cashedMovement;
 	private Vector3 facingDir;
 
 	private void UpdateMovementInputs(float scale) {
 		playerMovement += cameraControls.Right * Input.GetAxis("Horizontal") * scale;
 		playerMovement += cameraControls.Forward * Input.GetAxis("Vertical") * scale;
+		cashedMovement = playerMovement;
 	}
 	#endregion
 
