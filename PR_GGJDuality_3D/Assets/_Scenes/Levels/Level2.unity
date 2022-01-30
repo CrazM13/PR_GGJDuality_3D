@@ -646,7 +646,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a81490e70cbeb034e92289223b778bce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneIndex: 0
+  sceneIndex: 3
   delay: 1
 --- !u!1001 &897964322
 PrefabInstance:
