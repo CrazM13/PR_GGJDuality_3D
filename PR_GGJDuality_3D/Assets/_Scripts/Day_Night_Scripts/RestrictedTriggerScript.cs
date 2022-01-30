@@ -20,11 +20,17 @@ public class RestrictedTriggerScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        time.GetComponent<SwitchPlatforms>().setRestrictedTrue();
+        if(other.tag == "Player")
+        {
+            time.GetComponent<SwitchPlatforms>().setRestrictedTrue();
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        time.GetComponent<SwitchPlatforms>().setRestrictedFalse();
+        if(other.tag == "Player")
+        {
+            time.GetComponent<SwitchPlatforms>().setRestrictedFalse();
+        }
     }
 }

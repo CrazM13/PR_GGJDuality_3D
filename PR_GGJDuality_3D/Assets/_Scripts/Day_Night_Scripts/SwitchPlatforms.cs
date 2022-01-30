@@ -8,7 +8,7 @@ public class SwitchPlatforms : MonoBehaviour
     [SerializeField]private bool pressed = false;
     private GameObject[] dayObjects;
     private GameObject[] nightObjects;
-    private bool restricted;
+    [SerializeField] private bool restricted;
     private float timer = 5.0f;
     // Start is called before the first frame update
     void Start()
