@@ -9,7 +9,7 @@ public class SwitchPlatforms : MonoBehaviour
     private GameObject[] dayObjects;
     private GameObject[] nightObjects;
     private bool restricted;
-    private float timer = 10.0f;
+    private float timer = 5.0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -82,7 +82,7 @@ public class SwitchPlatforms : MonoBehaviour
             if(timer <= 0f)
             {
                 day = !day;
-                timer = 10.0f;
+                timer = 5.0f;
             }
         }
 
@@ -91,10 +91,12 @@ public class SwitchPlatforms : MonoBehaviour
             pressed = true;
             day = !day;
             Debug.Log("This is being pressed");
+            timer = 5.0f;
         }
         if((Input.GetAxis("Switch Time") == 0) && (restricted == false))
         {
             pressed = false;
+            timer = 5.0f;
         }
 
     }
