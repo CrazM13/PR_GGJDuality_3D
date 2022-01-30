@@ -963,7 +963,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3095297998414847109, guid: 892449d617e9d1040be26e6fbcf9d25b, type: 3}
       propertyPath: setTime
-      value: 9999999
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 3384963785820156107, guid: 892449d617e9d1040be26e6fbcf9d25b, type: 3}
       propertyPath: m_ConnectedAnchor.x
